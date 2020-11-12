@@ -1,0 +1,208 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 144272 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:389), pid=14376, tid=0x000000000000386c
+#
+# JRE version: OpenJDK Runtime Environment (8.0_202-b03) (build 1.8.0_202-release-1483-b03)
+# Java VM: OpenJDK 64-Bit Server VM (25.202-b03 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000001c579800):  JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=14444, stack(0x000000001e1f0000,0x000000001e2f0000)]
+
+Stack: [0x000000001e1f0000,0x000000001e2f0000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+Current CompileTask:
+C2:    416  387  s    4       sun.misc.URLClassPath::getNextLoader (88 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000001e559000 JavaThread "Service Thread" daemon [_thread_blocked, id=14456, stack(0x000000001e8f0000,0x000000001e9f0000)]
+  0x000000001c582000 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=14452, stack(0x000000001e3f0000,0x000000001e4f0000)]
+  0x000000001c57d800 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=14448, stack(0x000000001e2f0000,0x000000001e3f0000)]
+=>0x000000001c579800 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=14444, stack(0x000000001e1f0000,0x000000001e2f0000)]
+  0x000000001c575000 JavaThread "Attach Listener" daemon [_thread_blocked, id=14440, stack(0x000000001e0f0000,0x000000001e1f0000)]
+  0x000000001c574000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=14436, stack(0x000000001dff0000,0x000000001e0f0000)]
+  0x0000000002c99800 JavaThread "Finalizer" daemon [_thread_blocked, id=14432, stack(0x000000001ddf0000,0x000000001def0000)]
+  0x0000000002c96800 JavaThread "Reference Handler" daemon [_thread_blocked, id=14428, stack(0x000000001dcf0000,0x000000001ddf0000)]
+  0x0000000002ba2800 JavaThread "main" [_thread_in_native, id=14396, stack(0x0000000002a50000,0x0000000002b50000)]
+
+Other Threads:
+  0x000000001c538000 VMThread [stack: 0x000000001dbf0000,0x000000001dcf0000] [id=14424]
+  0x000000001c58e800 WatcherThread [stack: 0x000000001e9f0000,0x000000001eaf0000] [id=14460]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x00000006c2000000, size: 4064 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x00000007c0000000
+
+Heap:
+ PSYoungGen      total 75776K, used 14314K [0x000000076b580000, 0x0000000770a00000, 0x00000007c0000000)
+  eden space 65024K, 22% used [0x000000076b580000,0x000000076c37a8b0,0x000000076f500000)
+  from space 10752K, 0% used [0x000000076ff80000,0x000000076ff80000,0x0000000770a00000)
+  to   space 10752K, 0% used [0x000000076f500000,0x000000076f500000,0x000000076ff80000)
+ ParOldGen       total 173568K, used 0K [0x00000006c2000000, 0x00000006cc980000, 0x000000076b580000)
+  object space 173568K, 0% used [0x00000006c2000000,0x00000006c2000000,0x00000006cc980000)
+ Metaspace       used 5450K, capacity 5674K, committed 5888K, reserved 1056768K
+  class space    used 652K, capacity 738K, committed 768K, reserved 1048576K
+
+Card table byte_map: [0x0000000012150000,0x0000000012950000] byte_map_base: 0x000000000eb40000
+
+Marking Bits: (ParMarkBitMap*) 0x00000000550b9f30
+ Begin Bits: [0x00000000134a0000, 0x0000000017420000)
+ End Bits:   [0x0000000017420000, 0x000000001b3a0000)
+
+Polling page: 0x0000000000d20000
+
+CodeCache: size=245760Kb used=1966Kb max_used=1966Kb free=243793Kb
+ bounds [0x0000000002d90000, 0x0000000003000000, 0x0000000011d90000]
+ total_blobs=667 nmethods=389 adapters=192
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 0.395 Thread 0x000000001c582000  385       3       java.security.CodeSource::getCertificates (98 bytes)
+Event: 0.396 Thread 0x000000001c582000 nmethod 385 0x0000000002f77cd0 code [0x0000000002f77f00, 0x0000000002f78af8]
+Event: 0.396 Thread 0x000000001c57d800  386  s!   4       sun.misc.URLClassPath::getLoader (243 bytes)
+Event: 0.396 Thread 0x000000001c579800  387  s    4       sun.misc.URLClassPath::getNextLoader (88 bytes)
+Event: 0.403 Thread 0x000000001c582000  388   !   3       sun.reflect.generics.parser.SignatureParser::current (40 bytes)
+Event: 0.403 Thread 0x000000001c582000 nmethod 388 0x0000000002f7ae10 code [0x0000000002f7af80, 0x0000000002f7b150]
+Event: 0.405 Thread 0x000000001c582000  390       3       java.util.BitSet::checkInvariants (111 bytes)
+Event: 0.405 Thread 0x000000001c582000 nmethod 390 0x0000000002f7b290 code [0x0000000002f7b3e0, 0x0000000002f7b570]
+Event: 0.405 Thread 0x000000001c582000  389       3       java.util.BitSet::get (69 bytes)
+Event: 0.405 Thread 0x000000001c582000 nmethod 389 0x0000000002f7b5d0 code [0x0000000002f7b7c0, 0x0000000002f7c188]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 0.031 Thread 0x0000000002ba2800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x000000076b587f98) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jni.cpp, line 4012]
+Event: 0.116 Thread 0x0000000002ba2800 Exception <a 'java/security/PrivilegedActionException'> (0x000000076b692e40) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jvm.cpp, line 1508]
+Event: 0.116 Thread 0x0000000002ba2800 Exception <a 'java/security/PrivilegedActionException'> (0x000000076b693050) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jvm.cpp, line 1508]
+Event: 0.116 Thread 0x0000000002ba2800 Exception <a 'java/security/PrivilegedActionException'> (0x000000076b696c58) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jvm.cpp, line 1508]
+Event: 0.116 Thread 0x0000000002ba2800 Exception <a 'java/security/PrivilegedActionException'> (0x000000076b696e68) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jvm.cpp, line 1508]
+Event: 0.116 Thread 0x0000000002ba2800 Exception <a 'java/security/PrivilegedActionException'> (0x000000076b6983a0) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jvm.cpp, line 1508]
+Event: 0.116 Thread 0x0000000002ba2800 Exception <a 'java/security/PrivilegedActionException'> (0x000000076b6985b0) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jvm.cpp, line 1508]
+Event: 0.401 Thread 0x0000000002ba2800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 100> (0x000000076c2f31b0) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\interpreter\interpreterRuntime.cpp, line 368]
+Event: 0.402 Thread 0x0000000002ba2800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 18> (0x000000076c2f40e8) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\interpreter\interpreterRuntime.cpp, line 368]
+Event: 0.403 Thread 0x0000000002ba2800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076c2f4d18) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+
+Events (10 events):
+Event: 0.411 loading class org/gradle/internal/logging/source/DefaultStdOutLoggingSystem
+Event: 0.411 loading class org/gradle/internal/logging/source/DefaultStdOutLoggingSystem done
+Event: 0.411 loading class org/gradle/internal/logging/source/StdOutLoggingSystem
+Event: 0.411 loading class org/gradle/internal/logging/source/StdOutLoggingSystem done
+Event: 0.411 loading class org/gradle/internal/logging/source/PrintStreamLoggingSystem
+Event: 0.411 loading class org/gradle/internal/logging/source/PrintStreamLoggingSystem done
+Event: 0.411 loading class org/gradle/internal/io/TextStream
+Event: 0.411 loading class org/gradle/internal/io/TextStream done
+Event: 0.412 loading class org/gradle/internal/io/LinePerThreadBufferingOutputStream
+Event: 0.412 loading class org/gradle/internal/io/LinePerThreadBufferingOutputStream done
+
+
+Dynamic libraries:
+0x00007ff69eac0000 - 0x00007ff69eaf1000 	C:\Program Files\Android\Android Studio\jre\bin\java.exe
+0x00007ff8ab400000 - 0x00007ff8ab5ed000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff8ab310000 - 0x00007ff8ab3c3000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ff8a8300000 - 0x00007ff8a8595000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ff8aa9c0000 - 0x00007ff8aaa63000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ff8aa3e0000 - 0x00007ff8aa47e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ff8aabd0000 - 0x00007ff8aac6e000 	C:\WINDOWS\System32\sechost.dll
+0x00007ff8aa650000 - 0x00007ff8aa772000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ff8ab0d0000 - 0x00007ff8ab267000 	C:\WINDOWS\System32\USER32.dll
+0x00007ff8a77e0000 - 0x00007ff8a7800000 	C:\WINDOWS\System32\win32u.dll
+0x00007ff8aa250000 - 0x00007ff8aa279000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ff8a7950000 - 0x00007ff8a7aec000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ff8a7560000 - 0x00007ff8a7600000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ff8a7820000 - 0x00007ff8a791a000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ff895960000 - 0x00007ff895bd9000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17763.1518_none_de6e2bd0534e2567\COMCTL32.dll
+0x00007ff8aac80000 - 0x00007ff8aafad000 	C:\WINDOWS\System32\combase.dll
+0x00007ff8a85a0000 - 0x00007ff8a861e000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ff8aa990000 - 0x00007ff8aa9be000 	C:\WINDOWS\System32\IMM32.DLL
+0x0000000054730000 - 0x0000000054802000 	C:\Program Files\Android\Android Studio\jre\jre\bin\msvcr100.dll
+0x00000000548f0000 - 0x0000000055136000 	C:\Program Files\Android\Android Studio\jre\jre\bin\server\jvm.dll
+0x00007ff8aac70000 - 0x00007ff8aac78000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ff89aaa0000 - 0x00007ff89aaa9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff8a3090000 - 0x00007ff8a309a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ff8a55d0000 - 0x00007ff8a55f4000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff8aaa80000 - 0x00007ff8aaaed000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ff8a5440000 - 0x00007ff8a546d000 	C:\WINDOWS\SYSTEM32\winmmbase.dll
+0x00007ff8a7510000 - 0x00007ff8a755a000 	C:\WINDOWS\System32\cfgmgr32.dll
+0x00007ff8a5650000 - 0x00007ff8a565f000 	C:\Program Files\Android\Android Studio\jre\jre\bin\verify.dll
+0x00007ff89cc60000 - 0x00007ff89cc89000 	C:\Program Files\Android\Android Studio\jre\jre\bin\java.dll
+0x00007ff8a3e50000 - 0x00007ff8a3e66000 	C:\Program Files\Android\Android Studio\jre\jre\bin\zip.dll
+0x00007ff8a86f0000 - 0x00007ff8a9be9000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ff8ab020000 - 0x00007ff8ab0c8000 	C:\WINDOWS\System32\shcore.dll
+0x00007ff8a7ba0000 - 0x00007ff8a82f2000 	C:\WINDOWS\System32\windows.storage.dll
+0x00007ff8a7480000 - 0x00007ff8a74a4000 	C:\WINDOWS\System32\profapi.dll
+0x00007ff8a7420000 - 0x00007ff8a747d000 	C:\WINDOWS\System32\powrprof.dll
+0x00007ff8aab70000 - 0x00007ff8aabc2000 	C:\WINDOWS\System32\shlwapi.dll
+0x00007ff8a73e0000 - 0x00007ff8a73f1000 	C:\WINDOWS\System32\kernel.appcore.dll
+0x00007ff8a7800000 - 0x00007ff8a7817000 	C:\WINDOWS\System32\cryptsp.dll
+0x00007ff89cc40000 - 0x00007ff89cc5a000 	C:\Program Files\Android\Android Studio\jre\jre\bin\net.dll
+0x00007ff8a6bf0000 - 0x00007ff8a6c57000 	C:\WINDOWS\system32\mswsock.dll
+0x00007ff895f40000 - 0x00007ff895f51000 	C:\Program Files\Android\Android Studio\jre\jre\bin\nio.dll
+
+VM Arguments:
+jvm_args: -Dorg.gradle.appname=gradlew 
+java_command: org.gradle.wrapper.GradleWrapperMain -q -Ptarget-platform=android-x86 -Ptarget=C:\xampp\htdocs\project\courier_app\lib\main.dart -Ptrack-widget-creation=true -Pfilesystem-scheme=org-dartlang-root -Pdart-defines=flutter.inspector.structuredErrors%3Dtrue assembleDebug
+java_class_path (initial): C:\xampp\htdocs\project\courier_app\android\\gradle\wrapper\gradle-wrapper.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Android\Android Studio\jre
+CLASSPATH=C:\xampp\htdocs\project\courier_app\android\\gradle\wrapper\gradle-wrapper.jar
+PATH=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\Microsoft VS Code\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Program Files (x86)\ZeroTier\One\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Users\User\.windows-build-tools\python27\;C:\Users\User\.windows-build-tools\python27\;C:\Users\User\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\src\flutter\bin;C:\Users\User\AppData\Roaming\Composer\vendor\bin;C:\Users\User\AppData\Local\Android\Sdk\platform-tools;C:\Users\User\AppData\Local\Android\Sdk\tools;C:\Users\User\AppData\Local\Android\Sdk;C:\Program Files\Java\jdk-12;C:\src\flutter\.pub-cache\bin;C:\package\platform-tools;C:\Users\User\AppData\Local\.meteor;C:\Users\User\AppData\Roaming\npm;C:\src\flutter\bin\mingit\cmd
+USERNAME=User
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 17763 (10.0.17763.475)
+
+CPU:total 6 (initial active 6) (6 cores per cpu, 1 threads per core) family 6 model 158 stepping 10, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 16641584k(3787528k free), swap 17665584k(4348k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.202-b03) for windows-amd64 JRE (1.8.0_202-release-1483-b03), built by "builder" with MS VC++ 10.0 (VS2010)
+
+time: Mon Nov 02 11:46:07 2020
+timezone: SE Asia Standard Time
+elapsed time: 0 seconds (0d 0h 0m 0s)
+
