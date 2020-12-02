@@ -32,10 +32,16 @@ dependencies:
   flutter_secure_storage: ^3.3.2
   device_info: ^0.4.2+9
   onesignal_flutter: ^2.6.1
+  flutter_launcher_icons: ^0.8.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "lib/assets/ultisend.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
