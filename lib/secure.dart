@@ -1,12 +1,11 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'device.dart';
-import 'variable.dart';
 
 dynamic globalSecureStorage;
 
-Future initSecureStorage() async {
+Future initSecureStorage(signature) async {
     globalSecureStorage = const FlutterSecureStorage();
-    await secureVariable();
+    await secureVariable(signature);
     return globalSecureStorage;
 }
 
@@ -27,7 +26,7 @@ Future deleteStorageKey(String key) async {
   await globalSecureStorage.delete(key: key);
 }
 
-Future secureVariable() async {
-  await setStorageValue('signature', ultiSendSignature);
+Future secureVariable(signature) async {
+  await setStorageValue('signature', signature);
   await setStorageValue('deviceId',deviceId);
 }

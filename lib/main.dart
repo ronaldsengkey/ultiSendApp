@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 import 'device.dart';
 import 'onesignal.dart';
 import 'secure.dart';
-import 'variable.dart';
 
 String signature;
 String deviceId;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  const bool isProduction = bool.fromEnvironment('dart.vm.product');
+  await DotEnv.load(fileName: isProduction ? ".env.production" : ".env.local");
   await cekDeviceInfo();
-  await initSecureStorage();
+  await initSecureStorage(DotEnv.env['SIGNATURE']);
   await initOneSignal();
   signature = await getStorageValue('signature');
   deviceId = await getStorageValue('deviceId');
@@ -63,7 +65,7 @@ class _UltisendPageState extends State<UltisendPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: WebviewScaffold(
-          url: url + ':8100/app?v=1&flowEntry=ultisend&continue='+url+':8100',
+          url: DotEnv.env['DASHBOARD_LINK'] + ':' + DotEnv.env['DASHBOARD_PORT'] + '/app?v='+DotEnv.env['VERSION']+'&flowEntry='+DotEnv.env['FLOWENTRY']+'&continue='+DotEnv.env['DASHBOARD_LINK']+':' + DotEnv.env['DASHBOARD_PORT'],
           headers: {
             "signature": signature
           },
